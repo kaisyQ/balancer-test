@@ -1,5 +1,36 @@
 ﻿version: "3.9"
 services:
+
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      - APP_ENV=prod
+    ports:
+      - "9000:9000"
+    depends_on:
+      - database
+    volumes:
+      - ./:/var/www/app
+    container_name: balancer_app
+
+  # php-fpm:
+  #   image: php:8.3-fpm
+  #   volumes:
+  #     - ./:/var/www/app
+  web:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - app
+    volumes:
+      - ./:/var/www/app
+    container_name: balancer_web
+
   database:
     image: postgres:16
     environment:
@@ -14,3 +45,8 @@ services:
       - "5477:5432"
     container_name: balancer_database
     restart: always
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:

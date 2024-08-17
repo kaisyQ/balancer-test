@@ -30,8 +30,8 @@ jobs:
     - name: show dir
       run: ls
     - name: Build application container
-      run: docker build -t balancer_app ./docker/app/Dockerfile
+      run: docker build . -t balancer_app -f ./docker/app/Dockerfile
     - name: Build nginx web service container
-      run: docker build -t balancer_web ./docker/nginx/Dockerfile
+      run: docker build . -t balancer_web -f ./docker/nginx/Dockerfile
     
 

@@ -4,7 +4,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./docker/app/Dockerfile
     environment:
       - APP_ENV=prod
     ports:
@@ -15,10 +15,6 @@ services:
       - ./:/var/www/app
     container_name: balancer_app
 
-  # php-fpm:
-  #   image: php:8.3-fpm
-  #   volumes:
-  #     - ./:/var/www/app
   web:
     build:
       context: .

@@ -3,6 +3,7 @@
 namespace App\Application\Services;
 
 use App\Application\Abstractions\Services\IProcessService;
+use App\Application\Exceptions\ValidateException;
 use App\Application\Models\ProcessModel;
 use App\Domain\Entities\Process;
 use App\Insfrastructure\Abstractions\Repositories\IProcessRepository;
@@ -31,6 +32,14 @@ final readonly class ProcessService implements IProcessService
 
     public function deleteById(int $id): void
     {
+        $process = $this->processRepository->find($id);
+    
+        if ($process === null) {
+            throw new ValidateException("Process with id: $id not found");
+        }
 
+        $this->em->remove($process);
+
+        $this->em->flush();
     }
 }

@@ -35,9 +35,11 @@ final class ProcessController extends AbstractController
         return new Response(status:200);
     }
 
-    #[Route(name: "@delete", path: "", methods: ["DELETE"])]
-    public function deleteProcess(Request $request): Response 
+    #[Route(name: "@delete", path: "/{id}", methods: ["DELETE"])]
+    public function deleteProcess(Request $request, int $id): Response 
     {
+        $this->processService->deleteById($id);
+
         return new Response(status:200);
     }
 

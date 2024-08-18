@@ -31,14 +31,15 @@ final readonly class MachineService implements IMachineService
 
     public function deleteById(int $id): void
     {
-        $process = $this->machineRepository->find($id);
+        $machine = $this->machineRepository->find($id);
     
-        if ($process === null) {
+        if ($machine === null) {
             throw new ValidateException("Machine with id: $id not found");
         }
 
-        $this->em->remove($process);
+        $this->em->remove($machine);
 
         $this->em->flush();
     }
 }
+    

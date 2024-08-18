@@ -18,11 +18,12 @@ final class Version20240816110802 extends AbstractMigration
     {
         $this->addSql("
             create table if not exists public.machines (
-                id int generated always as identity primary key not null,
+                id serial primary key not null,
                 total_memory int not null, 
                 total_process int not null
             );
         ");
+        // $this->addSql('create sequence machines_id_seq increment by 1 minvalue 1 start 1');
 
         $this->addSql("comment on column public.machines.id is 'Machine identifier';");
         $this->addSql("comment on column public.machines.total_memory is 'Total count of machine memory';");
@@ -32,6 +33,8 @@ final class Version20240816110802 extends AbstractMigration
 
     public function down(Schema $schema): void
     {
+        
+        $this->addSql('DROP SEQUENCE machines_id_seq CASCADE');
         $this->addSql("drop table if exists public.machines");
     }
 }

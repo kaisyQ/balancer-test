@@ -1,4 +1,7 @@
 up-app:
 	cp .env.example .env
 	docker compose up -d
-	php bin/console doctrine:migrations:migrate
+	docker compose exec -it php bin/console doctrine:migrations:migrate
+
+up-database:
+	docker compose up -d database

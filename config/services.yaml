@@ -20,5 +20,8 @@ services:
             - '../src/Domain/Entities/'
             - '../src/Kernel.php'
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    App\Insfrastructure\Abstractions\Repositories\IProcessRepository: 
+        class: 'App\Infrastructure\Repositories\ProcessRepository'
+    
+    App\Application\Abstractions\Services\IProcessService: 
+        class: 'App\Application\Services\ProcessService'

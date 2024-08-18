@@ -19,11 +19,14 @@ final class Version20240816112429 extends AbstractMigration
     {
         $this->addSql("
             create table if not exists public.processes (
-                id int generated always as identity primary key not null,
+                id int primary key not null,
                 total_memory int not null, 
-                total_process int not null
+                total_process int not null,
+                machine_id int
             );
         ");
+
+        $this->addSql('create sequence processes_id_seq increment by 1 minvalue 1 start 1');
 
         $this->addSql("comment on column public.processes.id is 'Process identifier';");
         $this->addSql("comment on column public.processes.total_memory is 'Total count of process memory';");
@@ -33,5 +36,6 @@ final class Version20240816112429 extends AbstractMigration
     public function down(Schema $schema): void
     {
         $this->addSql("drop table if exists public.processes");
+        $this->addSql('DROP SEQUENCE processes_id_seq CASCADE');
     }
 }

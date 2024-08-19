@@ -42,5 +42,7 @@ final readonly class ProcessService implements IProcessService
         $this->em->remove($process);
 
         $this->em->flush();
+
+        $this->rebalanceProcessesUseCase->execute();
     }
 }

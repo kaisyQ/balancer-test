@@ -75,10 +75,6 @@ final readonly class RebalanceProcessesUseCase implements IRebalanceProcessesUse
 
                 break;
             }
-
-            if ($processModel->getMachineId() === null) {
-                throw new ValidateException("There is no resources for this process");
-            }
         }
 
 

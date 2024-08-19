@@ -3,6 +3,7 @@
 namespace App\Application\Services;
 
 use App\Application\Abstractions\Services\IProcessService;
+use App\Application\Abstractions\UseCases\IRebalanceProcessesUseCase;
 use App\Application\Exceptions\ValidateException;
 use App\Application\Models\ProcessModel;
 use App\Domain\Entities\Process;
@@ -15,19 +16,19 @@ final readonly class ProcessService implements IProcessService
     public function __construct(
         private IProcessRepository $processRepository,
         private EntityManagerInterface $em,
+        private IRebalanceProcessesUseCase $rebalanceProcessesUseCase
     ){}
 
     public function save(ProcessModel $processModel): void
     {
-        $mapper = AutoMapper::create();
-
         /** @var Process */
-        $processEntity = $mapper->map($processModel, Process::class);
-
+        $processEntity = AutoMapper::create()->map($processModel, Process::class);
 
         $this->em->persist($processEntity);
         
         $this->em->flush();
+
+        $this->rebalanceProcessesUseCase->execute();
     }
 
     public function deleteById(int $id): void

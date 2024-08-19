@@ -35,3 +35,6 @@ services:
 
     App\Application\Abstractions\Services\IMachineService: 
         class: 'App\Application\Services\MachineService'
+
+    App\Application\Abstractions\UseCases\IRebalanceProcessesUseCase:
+        class: 'App\Application\UseCases\RebalanceProcessesUseCase'

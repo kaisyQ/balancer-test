@@ -60,7 +60,7 @@ final class ProcessModel
         return $this->machineId;
     }
 
-    public function setMachineId(int $machineId): self
+    public function setMachineId(?int $machineId): self
     {
         $this->machineId = $machineId;
 

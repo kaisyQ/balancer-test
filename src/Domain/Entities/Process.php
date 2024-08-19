@@ -52,7 +52,7 @@ final class Process
         return $this;
     }
 
-    public function getMachineId(): int
+    public function getMachineId(): ?int
     {
         return $this->machineId;
     }

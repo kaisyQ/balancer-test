@@ -20,6 +20,10 @@ final class MachineModel
     #[MapFrom(source: Machine::class, property: 'totalMemory')]
     private int $totalMemory;
 
+    private int $loadedMemory = 0;
+
+    private int $loadedProcess = 0;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -56,5 +60,33 @@ final class MachineModel
         return $this;
     }
 
+    public function getLoadedMemory(): int 
+    {
+        return $this->loadedMemory;
+    }
+
+    public function setLoadedMemory(int $loadedMemory): self 
+    {
+        $this->loadedMemory = $loadedMemory;
+
+        return $this;
+    }
+
+    public function getLoadedProcess(): int 
+    {
+        return $this->loadedProcess;
+    }
+
+    public function setLoadedProcess(int $loadedProcess): self 
+    {
+        $this->loadedProcess = $loadedProcess;
+
+        return $this;
+    }
+
+    public function getTotalLoad(): int
+    {
+        return (int)(($this->getLoadedMemory() + $this->getLoadedProcess()) / ($this->getTotalMemory() + $this->getTotalProcess()));
+    }
 
 }

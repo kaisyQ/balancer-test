@@ -8,6 +8,10 @@ use AutoMapper\Attribute\MapTo;
 final readonly class CreateMachineRequest 
 {
 
+
+    /**
+     * @TODO добавить Assert
+     */
     public function __construct(
         #[MapTo(target: MachineModel::class, property: 'totalProcess')]
         public int $totalProcess,

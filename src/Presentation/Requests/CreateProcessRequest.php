@@ -8,7 +8,9 @@ use AutoMapper\Attribute\MapTo;
 
 final readonly class CreateProcessRequest 
 {
-
+    /**
+     * @TODO добавить Assert
+     */
     public function __construct(
         #[MapTo(target: ProcessModel::class, property: 'totalProcess')]
         public int $totalProcess,

@@ -5,6 +5,9 @@ namespace App\Domain\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Cущность рабочей машины
+ */
 #[ORM\Entity]
 #[ORM\Table(name: "public.machines")]
 final class Machine

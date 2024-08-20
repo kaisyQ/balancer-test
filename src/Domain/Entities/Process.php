@@ -4,6 +4,10 @@ namespace App\Domain\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
+/**
+ * Cущность процесса
+ */
 #[ORM\Entity]
 #[ORM\Table(name: "public.processes")]
 final class Process 

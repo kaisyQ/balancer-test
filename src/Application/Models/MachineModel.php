@@ -6,6 +6,9 @@ use App\Domain\Entities\Machine;
 use AutoMapper\Attribute\MapFrom;
 use AutoMapper\Attribute\MapTo;
 
+/**
+ * Модель рабочей машины
+ */
 final class MachineModel 
 {
     #[MapTo(target: Machine::class, property: 'id')]

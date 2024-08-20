@@ -8,6 +8,7 @@ use AutoMapper\Attribute\MapTo;
 use Symfony\Component\Validator\Constraints as Assert;
 use OpenApi\Attributes as OA;
 
+/** DTO для создания процесса */
 #[OA\Schema(description: "Данные для создания нового процессв")]
 final readonly class CreateProcessRequest 
 {

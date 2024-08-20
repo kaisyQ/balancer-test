@@ -5,9 +5,12 @@ namespace App\Application\Abstractions\Decorators;
 use App\Application\Abstractions\Services\IMachineService;
 use App\Application\Models\MachineModel;
 
+
+/**
+ * Декоратор для сервиса рабочих машин
+ */
 abstract class MachineServiceDecorator implements IMachineService
 {
-
     public function __construct(
         private readonly IMachineService $machineService
     ) {}

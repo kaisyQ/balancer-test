@@ -1,12 +1,15 @@
 <?php declare(strict_types=1);
 
-
 namespace App\Application\Models;
 
 use App\Domain\Entities\Process;
 use AutoMapper\Attribute\MapFrom;
 use AutoMapper\Attribute\MapTo;
 
+
+/**
+ * Модель процесса
+ */
 final class ProcessModel
 {
 

@@ -5,6 +5,9 @@ namespace App\Application\Abstractions\Decorators;
 use App\Application\Abstractions\Services\IProcessService;
 use App\Application\Models\ProcessModel;
 
+/**
+ * Декоратор для сервиса рабочих процессов
+ */
 abstract class ProcessServiceDecorator implements IProcessService
 {
 

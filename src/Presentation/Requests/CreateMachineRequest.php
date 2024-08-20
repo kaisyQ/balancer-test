@@ -7,6 +7,8 @@ use AutoMapper\Attribute\MapTo;
 use OpenApi\Attributes as OA;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
+/** DTO для создания машины */
 #[OA\Schema(description: "Данные для создания новой машины")]
 final readonly class CreateMachineRequest 
 {

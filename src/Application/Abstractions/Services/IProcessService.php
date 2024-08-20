@@ -4,17 +4,14 @@ namespace App\Application\Abstractions\Services;
 
 use App\Application\Models\ProcessModel;
 
+
 /**
- * Interface IProcessService
- *
- * Represents an abstraction of service for Process entity.
- *
- * @package App\Application\Abstractions\Services
+ * Интерфейс класса сервиса для работы с процессами
  */
 interface IProcessService 
 {
     /**
-     * Saves the Process.
+     * Метод создания нового процесса
      *
      * @return void
      */
@@ -22,9 +19,9 @@ interface IProcessService
     public function save(ProcessModel $processModel): void;
 
     /**
-     * Deletes the Process by id.
-     *
-     * @return void
+     * Метод удаления процесса по id
+     * 
+     * @param int $id Идентификатор процесса
      */
     public function deleteById(int $id): void;
 

@@ -28,7 +28,7 @@ class MachineServiceTest extends TestCase
 
     #[DataProvider('provideTestCreateMachine')]
     #[TestDox('Тест создания машины')]
-    public function testCreateMachine(int $id, int $totalProcess, int $totalMemory)
+    public function testCreateMachine(int $id, int $totalProcess, int $totalMemory): void
     {
         $machineModel = new MachineModel();
         $machineModel->setId($id);

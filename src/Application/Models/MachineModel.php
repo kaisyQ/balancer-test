@@ -84,9 +84,9 @@ final class MachineModel
         return $this;
     }
 
-    public function getTotalLoad(): int
+    public function getTotalLoad(): float
     {
-        return (int)(($this->getLoadedMemory() + $this->getLoadedProcess()) / ($this->getTotalMemory() + $this->getTotalProcess()));
+        return ($this->getLoadedMemory() + $this->getLoadedProcess()) / ($this->getTotalMemory() + $this->getTotalProcess());
     }
 
 }

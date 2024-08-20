@@ -33,7 +33,7 @@ class RebalanceProcessesUseCaseTest extends TestCase
 
 
     #[TestDox("Тест работы исключения, когда нет машин")]
-    public function testExceptionThrownWhenNoMachines()
+    public function testExceptionThrownWhenNoMachines(): void
     {
         $this->machineRepository
             ->expects($this->once())
@@ -49,7 +49,7 @@ class RebalanceProcessesUseCaseTest extends TestCase
     }
 
     #[TestDox("Тест выхода корректного выхода из метода в случае если процессы отсутствуют")]
-    public function testFunctionReturnsWithoutDoingAnythingWhenNoProcesses()
+    public function testFunctionReturnsWithoutDoingAnythingWhenNoProcesses(): void
     {
         $this->machineRepository->expects($this->once())
             ->method('findAll')
@@ -99,7 +99,7 @@ class RebalanceProcessesUseCaseTest extends TestCase
 
     #[DataProvider('provideTestProcessesAreCorrectlyAssignedToMachines')]
     #[TestDox('Тест распределения процессов по машинам')]
-    public function testProcessesAreCorrectlyAssignedToMachines(array $machinesData, array $processesData)
+    public function testProcessesAreCorrectlyAssignedToMachines(array $machinesData, array $processesData): void
     {
         $machines = array_map(static fn (array $machineData): Machine => 
             (new Machine)
@@ -171,7 +171,7 @@ class RebalanceProcessesUseCaseTest extends TestCase
 
     #[DataProvider('provideTestProcessesArePersistedToDatabase')]
     #[TestDox('Тест сохранения обновленных процессов в базу')]
-    public function testProcessesArePersistedToDatabase(array $machinesData, array $processesData)
+    public function testProcessesArePersistedToDatabase(array $machinesData, array $processesData): void
     {
         $machines = array_map(static fn (array $machineData): Machine => 
             (new Machine)

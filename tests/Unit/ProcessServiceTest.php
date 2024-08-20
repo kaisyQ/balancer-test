@@ -29,7 +29,7 @@ class ProcessServiceTest extends TestCase
 
     #[DataProvider('provideTestCreateProcess')]
     #[TestDox('Тест создания нового процессв')]
-    public function testCreateProcess(int $id, int $totalProcess, int $totalMemory, ?int $machineId)
+    public function testCreateProcess(int $id, int $totalProcess, int $totalMemory, ?int $machineId): void
     {
         $processModel = (new ProcessModel())
             ->setId($id)

@@ -3,7 +3,7 @@
 
 namespace App\Presentation\Controllers;
 
-use App\Application\Abstractions\Services\IProcessService as ServicesIProcessService;
+use App\Application\Abstractions\Services\IProcessService;
 use App\Application\Models\ProcessModel;
 use App\Presentation\Requests\CreateProcessRequest;
 use AutoMapper\AutoMapper;
@@ -18,7 +18,7 @@ use OpenApi\Attributes as OA;
 final class ProcessController extends AbstractController 
 {
     public function __construct(
-        private readonly ServicesIProcessService $processService,
+        private readonly IProcessService $processService,
     ){}
     #[Route(name: "@create", path: "", methods: ["POST"])]
     #[OA\Post(

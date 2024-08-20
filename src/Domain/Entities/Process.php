@@ -23,6 +23,13 @@ final class Process
     #[ORM\Column(name: 'machine_id')]
     private ?int $machineId;
 
+    public function setId(?int $id): self 
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

@@ -30,11 +30,8 @@ final class MachineController extends AbstractController
     #[OA\Response(response: 200, description: "OK")]
     public function createMachine(Request $request, #[MapRequestPayload] CreateMachineRequest $data): Response 
     {
-
-        $mapper = AutoMapper::create();
-
         /** @var MachineModel */
-        $machineModel = $mapper->map($data, MachineModel::class);
+        $machineModel = AutoMapper::create()->map($data, MachineModel::class);
 
         $this->machineService->save($machineModel);
 
@@ -52,7 +49,6 @@ final class MachineController extends AbstractController
     #[OA\Response(response: 200, description: "OK")]
     public function deleteMachine(Request $request, int $id): Response 
     {
-
         $this->machineService->deleteById($id);
 
         return new Response(status:200);

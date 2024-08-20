@@ -9,21 +9,37 @@ use App\Domain\Entities\Machine;
 use App\Application\Services\MachineService;
 use App\Insfrastructure\Abstractions\Repositories\IMachineRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\TestDox;
 
 class MachineServiceTest extends TestCase
 {
-    public function testSaveCreatesMachineEntityAndPersistsIt()
+
+
+    public static function provideTestCreateMachine(): array {
+        return [
+            'Характеристики рабочей машины' => [
+                'id' => 1,
+                'totalProcess' => 10,
+                'totalMemory' => 100
+            ]
+        ];
+    }
+
+    #[DataProvider('provideTestCreateMachine')]
+    #[TestDox('Тест создания машины')]
+    public function testCreateMachine(int $id, int $totalProcess, int $totalMemory)
     {
         $machineModel = new MachineModel();
-        $machineModel->setId(1);
-        $machineModel->setTotalProcess(10);
-        $machineModel->setTotalMemory(100);
+        $machineModel->setId($id);
+        $machineModel->setTotalProcess($totalProcess);
+        $machineModel->setTotalMemory($totalMemory);
 
 
         $machine = (new Machine())
-            ->setId(1)
-            ->setTotalMemory(100)
-            ->setTotalProcess(10);
+            ->setId($id)
+            ->setTotalMemory($totalMemory)
+            ->setTotalProcess($totalProcess);
 
         /** @var EntityManagerInterface&\PHPUnit\Framework\MockObject\MockObject $entityManager */
         $entityManager = $this->createMock(EntityManagerInterface::class);
@@ -43,11 +59,18 @@ class MachineServiceTest extends TestCase
         $machineService->save($machineModel);
     }
 
-    public function testDeleteByIdMachineNotFound(): void
-    {
-        // Arrange
-        $id = 1;
+    public static function provideTestDeleteMachineByIdNotFound(): array {
+        return [
+            'Несуществующий идентификатор машины' => [
+                'id' => 1
+            ]
+        ];
+    }
 
+    #[DataProvider('provideTestDeleteMachineByIdNotFound')]
+    #[TestDox('Тест удаления машины, если машина не существует')]
+    public function testDeleteByIdMachineNotFound(int $id): void
+    {
         /** @var IMachineRepository&\PHPUnit\Framework\MockObject\MockObject $machineRepository */
         $machineRepository = $this->createMock(IMachineRepository::class);
         
@@ -64,14 +87,23 @@ class MachineServiceTest extends TestCase
         $machineService->deleteById($id);
     }
 
-    public function testDeleteByIdMachineFound(): void
+    public static function provideTestDeleteMachineByIdFound(): array {
+        return [
+            'Характеристрики существующей машины' => [
+                'id' => 1,
+                'totalProcess' => 10,
+                'totalMemory' => 100
+            ]
+        ];
+    }
+    #[DataProvider('provideTestDeleteMachineByIdFound')]
+    #[TestDox('Тест удаления машины, если машина существует')]
+    public function testDeleteByIdMachineFound(int $id, int $totalProcess, int $totalMemory): void
     {
-        $id = 1;
-
         $machine = (new Machine())
             ->setId($id)
-            ->setTotalMemory(100)
-            ->setTotalProcess(10)
+            ->setTotalMemory($totalMemory)
+            ->setTotalProcess($totalProcess)
         ;
 
         /** @var IMachineRepository&\PHPUnit\Framework\MockObject\MockObject $machineRepository */

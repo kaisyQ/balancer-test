@@ -22,14 +22,12 @@ final readonly class RebalanceProcessesUseCase implements IRebalanceProcessesUse
     ){}
     public function execute(): void
     {
-
         /** @var Machine[] $machines */
         $machines = $this->machineRepository->findAll();
 
         if (count($machines) === 0) {
             throw new ValidateException("No machines for balancing processes");
         }
-
 
         $processes = $this->processRepository->findAll();
 
@@ -56,8 +54,7 @@ final readonly class RebalanceProcessesUseCase implements IRebalanceProcessesUse
             
             foreach ($machineModels as $machineModel) {
 
-                if (
-                    !(
+                if (!(
                         $machineModel->getTotalMemory() - $machineModel->getLoadedMemory() >= $processModel->getTotalMemory() && 
                         $machineModel->getTotalProcess() - $machineModel->getLoadedProcess() >= $processModel->getTotalProcess()
                     )
@@ -65,8 +62,8 @@ final readonly class RebalanceProcessesUseCase implements IRebalanceProcessesUse
                     continue;
                 }
 
-
                 $machineModel->setLoadedMemory($machineModel->getLoadedMemory() + $processModel->getTotalMemory());
+
                 $machineModel->setLoadedProcess($machineModel->getLoadedProcess() + $processModel->getTotalProcess());
 
                 $processModel->setMachineId($machineModel->getId());
@@ -76,7 +73,6 @@ final readonly class RebalanceProcessesUseCase implements IRebalanceProcessesUse
                 break;
             }
         }
-
 
         $resultedProcesses = array_combine(array_map(static fn (ProcessModel $model) => $model->getId(), $processModels), $processModels);
         

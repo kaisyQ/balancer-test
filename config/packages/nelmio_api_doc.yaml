@@ -1,9 +1,9 @@
 nelmio_api_doc:
     documentation:
         info:
-            title: Balancer  
-            description: The Balancer microservice is responsible for managing and distributing incoming requests to a pool of available working machines.
+            title: Balancer
+            description: Микросервис балансировщика отвечает за управление входящими запросами и их распределение по пулу доступных рабочих машин.
             version: 1.0.0
     areas: # to filter documented areas
         path_patterns:
-            - ^/api(?!/docs$) # Accepts routes under /api except /api/docs
+            - ^/api(?!/doc$) # Accepts routes under /api except /api/doc

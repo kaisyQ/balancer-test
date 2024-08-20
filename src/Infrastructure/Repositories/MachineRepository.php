@@ -4,7 +4,7 @@ namespace App\Infrastructure\Repositories;
 
 
 use App\Domain\Entities\Machine;
-use App\Insfrastructure\Abstractions\Repositories\IMachineRepository;
+use App\Infrastructure\Abstractions\Repositories\IMachineRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

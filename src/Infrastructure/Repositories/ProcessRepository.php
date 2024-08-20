@@ -4,7 +4,7 @@ namespace App\Infrastructure\Repositories;
 
 
 use App\Domain\Entities\Process;
-use App\Insfrastructure\Abstractions\Repositories\IProcessRepository;
+use App\Infrastructure\Abstractions\Repositories\IProcessRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

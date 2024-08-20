@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 use App\Application\Models\ProcessModel;
 use App\Application\Services\ProcessService;
 use App\Domain\Entities\Process;
-use App\Insfrastructure\Abstractions\Repositories\IProcessRepository;
+use App\Infrastructure\Abstractions\Repositories\IProcessRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\TestDox;

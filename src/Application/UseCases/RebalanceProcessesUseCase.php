@@ -8,8 +8,8 @@ use App\Application\Models\MachineModel;
 use App\Application\Models\ProcessModel;
 use App\Domain\Entities\Machine;
 use App\Domain\Entities\Process;
-use App\Insfrastructure\Abstractions\Repositories\IMachineRepository;
-use App\Insfrastructure\Abstractions\Repositories\IProcessRepository;
+use App\Infrastructure\Abstractions\Repositories\IMachineRepository;
+use App\Infrastructure\Abstractions\Repositories\IProcessRepository;
 use AutoMapper\AutoMapper;
 use Doctrine\ORM\EntityManagerInterface;
 

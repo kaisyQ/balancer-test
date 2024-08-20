@@ -6,7 +6,7 @@ use App\Application\Abstractions\Services\IProcessService;
 use App\Application\Exceptions\ValidateException;
 use App\Application\Models\ProcessModel;
 use App\Domain\Entities\Process;
-use App\Insfrastructure\Abstractions\Repositories\IProcessRepository;
+use App\Infrastructure\Abstractions\Repositories\IProcessRepository;
 use AutoMapper\AutoMapper;
 use Doctrine\ORM\EntityManagerInterface;
 

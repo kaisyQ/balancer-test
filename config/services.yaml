@@ -44,10 +44,10 @@ services:
 
     # Repositories
 
-    App\Insfrastructure\Abstractions\Repositories\IProcessRepository: 
+    App\Infrastructure\Abstractions\Repositories\IProcessRepository: 
         class: 'App\Infrastructure\Repositories\ProcessRepository'
 
-    App\Insfrastructure\Abstractions\Repositories\IMachineRepository:
+    App\Infrastructure\Abstractions\Repositories\IMachineRepository:
         class: 'App\Infrastructure\Repositories\MachineRepository'
 
     # UseCases 

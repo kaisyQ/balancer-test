@@ -6,7 +6,7 @@ use App\Application\Abstractions\Services\IMachineService;
 use App\Application\Exceptions\ValidateException;
 use App\Application\Models\MachineModel;
 use App\Domain\Entities\Machine;
-use App\Insfrastructure\Abstractions\Repositories\IMachineRepository;
+use App\Infrastructure\Abstractions\Repositories\IMachineRepository;
 use AutoMapper\AutoMapper;
 use Doctrine\ORM\EntityManagerInterface;
 

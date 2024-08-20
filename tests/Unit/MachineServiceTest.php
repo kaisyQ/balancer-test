@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 use App\Application\Models\MachineModel;
 use App\Domain\Entities\Machine;
 use App\Application\Services\MachineService;
-use App\Insfrastructure\Abstractions\Repositories\IMachineRepository;
+use App\Infrastructure\Abstractions\Repositories\IMachineRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\TestDox;

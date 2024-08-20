@@ -19,7 +19,6 @@ Or, if you're on Linux and Docker requires sudo privileges:
 
 If you don't have Make installed, you can use the following commands to set up the project:
 
-## 
 ``cp .env.example .env``
 
 ``docker compose up -d``

@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 #[ORM\Entity]
 #[ORM\Table(name: "public.machines")]
-final class Machine
+class Machine
 {
     
     #[ORM\Id]

@@ -3,7 +3,6 @@
 namespace App\Application\UseCases;
 
 use App\Application\Abstractions\UseCases\IRebalanceProcessesUseCase;
-use App\Application\Exceptions\ValidateException;
 use App\Application\Models\MachineModel;
 use App\Application\Models\ProcessModel;
 use App\Domain\Entities\Machine;
@@ -26,7 +25,7 @@ final readonly class RebalanceProcessesUseCase implements IRebalanceProcessesUse
         $machines = $this->machineRepository->findAll();
 
         if (count($machines) === 0) {
-            throw new ValidateException("No machines for balancing processes");
+            return;
         }
 
         $processes = $this->processRepository->findAll();

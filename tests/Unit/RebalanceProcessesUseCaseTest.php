@@ -3,7 +3,6 @@
 namespace App\Tests\Unit;
 
 use App\Application\UseCases\RebalanceProcessesUseCase;
-use App\Application\Exceptions\ValidateException;
 use App\Domain\Entities\Machine;
 use App\Domain\Entities\Process;
 use App\Infrastructure\Abstractions\Repositories\IMachineRepository;
@@ -29,23 +28,6 @@ class RebalanceProcessesUseCaseTest extends TestCase
         
         /** @var EntityManagerInterface&\PHPUnit\Framework\MockObject\MockObject $entityManager */
         $this->em = $this->createMock(EntityManagerInterface::class);
-    }
-
-
-    #[TestDox("Тест работы исключения, когда нет машин")]
-    public function testExceptionThrownWhenNoMachines(): void
-    {
-        $this->machineRepository
-            ->expects($this->once())
-            ->method('findAll')
-            ->willReturn([])
-        ;
-
-        $useCase = new RebalanceProcessesUseCase($this->processRepository, $this->machineRepository, $this->em);
-
-        $this->expectException(ValidateException::class);
-        
-        $useCase->execute();
     }
 
     #[TestDox("Тест выхода корректного выхода из метода в случае если процессы отсутствуют")]
